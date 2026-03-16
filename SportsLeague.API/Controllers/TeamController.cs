@@ -13,16 +13,16 @@ public class TeamController : ControllerBase
 {
     private readonly ITeamService _teamService;
     private readonly IMapper _mapper;
-    private readonly ILogger<TeamController> _logger;
+    
 
     public TeamController(
         ITeamService teamService,
-        IMapper mapper,
-        ILogger<TeamController> logger)
+        IMapper mapper)
+
     {
         _teamService = teamService;
         _mapper = mapper;
-        _logger = logger;
+        
     }
 
     [HttpGet]

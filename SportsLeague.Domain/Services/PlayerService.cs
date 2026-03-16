@@ -162,6 +162,5 @@ public class PlayerService : IPlayerService
 
     }
 
-    // siguente clase vamos en el numero 10 (craer DTOs) del doc fase 2
 
 }
