@@ -15,6 +15,14 @@ namespace SportsLeague.Domain.Entities
 
         // Navigation Properties
         public ICollection<TournamentTeam> TournamentTeams { get; set; } = new List<TournamentTeam>();
+        public ICollection<Match> Matches { get; set; } = new List<Match>();
         public ICollection<TournamentSponsor> TournamentSponsors { get; set; } = new List<TournamentSponsor>();
+
+        // Agregar dentro de la clase Team, después de TournamentTeams:
+
+
+        // NOTE: Home/Away matches belong to Team; Tournament only needs a single Matches collection
     }
+
+
 }
