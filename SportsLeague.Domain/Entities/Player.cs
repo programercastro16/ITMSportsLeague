@@ -15,5 +15,8 @@ namespace SportsLeague.Domain.Entities
         // Navigation Property
         public Team Team { get; set; } = null!;
 
+        // Agregar dentro de Player: 
+        public ICollection<Goal> Goals { get; set; } = new List<Goal>();
+        public ICollection<Card> Cards { get; set; } = new List<Card>();
     }
 }

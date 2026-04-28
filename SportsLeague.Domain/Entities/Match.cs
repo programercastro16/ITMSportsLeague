@@ -13,6 +13,12 @@ namespace SportsLeague.Domain.Entities
         public string Venue { get; set; } = string.Empty;
         public int Matchday { get; set; }
         public MatchStatus Status { get; set; } = MatchStatus.Scheduled;
+        // Agregar dentro de Match: 
+        // Relación 1:1 con resultado 
+        public MatchResult? MatchResult { get; set; }
+        // Relación 1:N con goles y tarjetas 
+        public ICollection<Goal> Goals { get; set; } = new List<Goal>();
+        public ICollection<Card> Cards { get; set; } = new List<Card>();
 
         // Navigation Properties
 
