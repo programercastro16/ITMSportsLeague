@@ -14,6 +14,7 @@ namespace SportsLeague.Domain.Entities
         public int TeamId { get; set; }
         // Navigation Property
         public Team Team { get; set; } = null!;
+        public ICollection<MatchLineup> MatchLineups { get; set; } = new List<MatchLineup>();
 
         // Agregar dentro de Player: 
         public ICollection<Goal> Goals { get; set; } = new List<Goal>();

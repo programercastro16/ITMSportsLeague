@@ -26,6 +26,10 @@ namespace SportsLeague.Domain.Entities
         public Team HomeTeam { get; set; } = null!;
         public Team AwayTeam { get; set; } = null!;
         public Referee Referee { get; set; } = null!;
+        public ICollection<MatchLineup> MatchLineups { get; set; } = new List<MatchLineup>();
+
+
 
     }
+
 }
