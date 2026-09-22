@@ -1,4 +1,4 @@
-﻿namespace SportsLeague.Domain.Enums
+namespace SportsLeague.Domain.Enums
 {
     public enum SponsorCategory
     {

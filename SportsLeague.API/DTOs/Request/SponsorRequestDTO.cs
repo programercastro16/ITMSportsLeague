@@ -1,4 +1,4 @@
-﻿using SportsLeague.Domain.Enums;
+using SportsLeague.Domain.Enums;
 
 namespace SportsLeague.API.DTOs.Request
 {
@@ -11,3 +11,4 @@ namespace SportsLeague.API.DTOs.Request
         public SponsorCategory Category { get; set; }
     }
 }
+

@@ -1,4 +1,4 @@
-﻿using SportsLeague.Domain.Entities;
+using SportsLeague.Domain.Entities;
 
 namespace SportsLeague.Domain.Interfaces.Repositories
 {
@@ -9,3 +9,4 @@ namespace SportsLeague.Domain.Interfaces.Repositories
         Task<IEnumerable<TournamentSponsor>> GetByTournamentIdAsync(int tournamentId);
     }
 }
+

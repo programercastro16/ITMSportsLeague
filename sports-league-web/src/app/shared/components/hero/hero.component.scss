@@ -1,0 +1,773 @@
+// ==========================================================================
+// HERO SECTION COMPONENT STYLES
+// Diseño minimalista de vanguardia, microinteracciones y animaciones fluidas
+// 100% agnóstico a frameworks externos (Cero dependencias de Bootstrap/Tailwind)
+// ==========================================================================
+
+:host {
+  display: block;
+  width: 100%;
+
+  // Design Tokens locales para aislamiento modular
+  --hero-bg: #070c18;
+  --hero-surface: rgba(14, 23, 42, 0.65);
+  --hero-surface-elevated: rgba(22, 36, 64, 0.75);
+  --hero-border: rgba(255, 255, 255, 0.09);
+  --hero-border-accent: rgba(0, 240, 168, 0.35);
+
+  --hero-accent: #00f0a8;
+  --hero-accent-hover: #1ffff0;
+  --hero-accent-glow: rgba(0, 240, 168, 0.38);
+  --hero-accent-dim: rgba(0, 240, 168, 0.12);
+
+  --hero-text-title: #ffffff;
+  --hero-text-body: #94a3b8;
+  --hero-text-muted: #64748b;
+
+  --hero-radius-card: 24px;
+  --hero-radius-button: 14px;
+  --hero-radius-pill: 9999px;
+
+  --hero-ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --hero-shadow-layer: 0 4px 6px -1px rgba(0, 0, 0, 0.25),
+    0 24px 48px -12px rgba(0, 0, 0, 0.55),
+    0 0 40px -10px rgba(0, 240, 168, 0.1);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at 50% -20%,
+    rgba(14, 28, 54, 0.8) 0%,
+    var(--hero-bg) 75%
+  );
+  border: 1px solid var(--hero-border);
+  border-radius: var(--hero-radius-card);
+  padding: clamp(2rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 3.5rem);
+  margin-bottom: 2.5rem;
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+  isolation: isolate;
+
+  // Luces de fondo difusas (Ambient Glow)
+  &__ambient {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.45;
+    animation: ambientPulse 8s ease-in-out infinite alternate;
+
+    &--cyan {
+      width: clamp(250px, 35vw, 420px);
+      height: clamp(250px, 35vw, 420px);
+      background: radial-gradient(circle, #00f0a8 0%, rgba(0, 240, 168, 0) 70%);
+      top: -15%;
+      right: 5%;
+    }
+
+    &--emerald {
+      width: clamp(200px, 30vw, 380px);
+      height: clamp(200px, 30vw, 380px);
+      background: radial-gradient(circle, #0369a1 0%, rgba(3, 105, 161, 0) 70%);
+      bottom: -10%;
+      left: 10%;
+      animation-delay: -4s;
+    }
+  }
+
+  // Contenedor principal con CSS Grid adaptativo
+  &__container {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  // -------------------------------------------------------------
+  // CONTENIDO DE TEXTO & ACCIONES
+  // -------------------------------------------------------------
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 2;
+  }
+
+  // Badge Superior
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.4rem 0.95rem;
+    background: var(--hero-accent-dim);
+    border: 1px solid var(--hero-border-accent);
+    border-radius: var(--hero-radius-pill);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--hero-accent);
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    // Animación de entrada escalonada 1
+    animation: heroStaggerIn 0.8s var(--hero-ease-spring) both;
+    animation-delay: 0.05s;
+
+    &-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--hero-accent);
+      box-shadow: 0 0 10px var(--hero-accent);
+      animation: dotPulse 1.8s ease-in-out infinite;
+    }
+
+    &-text {
+      line-height: 1;
+    }
+  }
+
+  // Título Principal
+  &__title {
+    font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+    color: var(--hero-text-title);
+    margin: 0 0 1.25rem 0;
+
+    // Animación de entrada escalonada 2
+    animation: heroStaggerIn 0.8s var(--hero-ease-spring) both;
+    animation-delay: 0.15s;
+
+    &-highlight {
+      display: inline-block;
+      background: linear-gradient(
+        135deg,
+        #ffffff 10%,
+        #d1fae5 50%,
+        var(--hero-accent) 95%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 40px rgba(0, 240, 168, 0.25);
+    }
+  }
+
+  // Párrafo de Soporte
+  &__description {
+    font-size: clamp(0.95rem, 1.2vw, 1.125rem);
+    line-height: 1.65;
+    color: var(--hero-text-body);
+    max-width: 520px;
+    margin: 0 0 2rem 0;
+
+    // Animación de entrada escalonada 3
+    animation: heroStaggerIn 0.8s var(--hero-ease-spring) both;
+    animation-delay: 0.25s;
+  }
+
+  // Acciones / Botones
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+
+    // Animación de entrada escalonada 4
+    animation: heroStaggerIn 0.8s var(--hero-ease-spring) both;
+    animation-delay: 0.35s;
+  }
+
+  // Microinteracciones en Botones
+  &__btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 0.85rem 1.65rem;
+    border-radius: var(--hero-radius-button);
+    font-size: 0.925rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.25s var(--hero-ease-spring),
+      box-shadow 0.25s var(--hero-ease-spring),
+      background-color 0.25s ease,
+      border-color 0.25s ease;
+
+    &-icon {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.25s var(--hero-ease-spring);
+    }
+
+    &:active {
+      transform: scale(0.97) !important;
+    }
+
+    // Botón Primario con Resplandor & Shimmer
+    &--primary {
+      background: var(--hero-accent);
+      color: #031e15;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 10px 25px -5px var(--hero-accent-glow);
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          60deg,
+          transparent,
+          rgba(255, 255, 255, 0.35),
+          transparent
+        );
+        transform: rotate(25deg) translateX(-100%);
+        transition: transform 0.6s ease;
+      }
+
+      &:hover {
+        background: var(--hero-accent-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 16px 32px -4px var(--hero-accent-glow),
+          0 0 20px rgba(0, 240, 168, 0.5);
+
+        &::after {
+          transform: rotate(25deg) translateX(100%);
+        }
+
+        .hero__btn-icon {
+          transform: translateX(3px);
+        }
+      }
+    }
+
+    // Botón Secundario Frosted Glass
+    &--ghost {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--hero-text-title);
+      border: 1px solid var(--hero-border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.09);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.4);
+
+        .hero__btn-icon {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  // Barra de Métricas Inferior
+  &__stats-strip {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2vw, 1.75rem);
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    width: 100%;
+
+    // Animación de entrada escalonada 5
+    animation: heroStaggerIn 0.8s var(--hero-ease-spring) both;
+    animation-delay: 0.45s;
+  }
+
+  &__stat-unit {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  &__stat-num {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--hero-text-title);
+    letter-spacing: -0.02em;
+  }
+
+  &__stat-tag {
+    font-size: 0.75rem;
+    color: var(--hero-text-muted);
+    font-weight: 500;
+  }
+
+  &__stat-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  // -------------------------------------------------------------
+  // COLUMNA VISUAL: TARJETA INTERACTIVA DE PARTIDO
+  // -------------------------------------------------------------
+  &__visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+
+    // Animación de entrada escalonada 6
+    animation: heroVisualIn 1s var(--hero-ease-spring) both;
+    animation-delay: 0.25s;
+  }
+}
+
+// Tarjeta con efecto Glassmorphism y profundidad multicapa
+.hero-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: var(--hero-surface);
+  border: 1px solid var(--hero-border);
+  border-radius: var(--hero-radius-card);
+  padding: 1.75rem;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: var(--hero-shadow-layer);
+  transition: transform 0.4s var(--hero-ease-spring),
+    box-shadow 0.4s var(--hero-ease-spring),
+    border-color 0.4s ease;
+
+  &:hover {
+    transform: translateY(-6px) scale(1.01);
+    border-color: var(--hero-border-accent);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
+      0 30px 60px -15px rgba(0, 0, 0, 0.7),
+      0 0 50px -5px rgba(0, 240, 168, 0.2);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  &__league {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    &-name {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--hero-text-title);
+    }
+  }
+
+  &__trophy-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    filter: drop-shadow(0 2px 8px rgba(255, 193, 7, 0.3));
+  }
+
+  &__season {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--hero-text-muted);
+  }
+
+  &__live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.3rem 0.65rem;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    border-radius: var(--hero-radius-pill);
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #f87171;
+    letter-spacing: 0.05em;
+
+    .live-pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ef4444;
+      box-shadow: 0 0 8px #ef4444;
+      animation: dotPulse 1.4s ease-in-out infinite;
+    }
+  }
+
+  // Marcador Central
+  &__scoreboard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 1rem;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  &__stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+// Equipos en el Marcador
+.hero-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  width: 90px;
+
+  &__crest {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    transition: transform 0.2s ease;
+
+    .hero-card:hover & {
+      transform: scale(1.08);
+    }
+  }
+
+  &__name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--hero-text-title);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  &__rank {
+    font-size: 0.68rem;
+    color: var(--hero-text-muted);
+  }
+}
+
+// Sección de Dígitos del Marcador
+.hero-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+
+  &__digits {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 2.15rem;
+    font-weight: 800;
+    font-family: inherit;
+    letter-spacing: -0.03em;
+    color: var(--hero-text-title);
+    line-height: 1;
+  }
+
+  &__num {
+    min-width: 28px;
+    text-align: center;
+  }
+
+  &__sep {
+    color: var(--hero-accent);
+    opacity: 0.8;
+  }
+
+  &__time {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--hero-accent);
+    background: var(--hero-accent-dim);
+    padding: 0.18rem 0.55rem;
+    border-radius: var(--hero-radius-pill);
+    border: 1px solid rgba(0, 240, 168, 0.25);
+  }
+}
+
+// Métricas de Posesión y Rendimiento
+.hero-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  &__labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--hero-text-body);
+    font-weight: 500;
+  }
+}
+
+.hero-progress {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--hero-radius-pill);
+  overflow: hidden;
+
+  &__fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0284c7, var(--hero-accent));
+    border-radius: var(--hero-radius-pill);
+    transition: width 1s ease-in-out;
+  }
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.65rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--hero-radius-pill);
+  font-size: 0.72rem;
+  color: var(--hero-text-body);
+
+  &__dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--hero-accent);
+  }
+}
+
+// Chip Flotante Decorativo
+.hero-floating-chip {
+  position: absolute;
+  bottom: -22px;
+  right: -16px;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: rgba(18, 30, 52, 0.92);
+  border: 1px solid var(--hero-border-accent);
+  border-radius: 14px;
+  padding: 0.55rem 0.95rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(0, 240, 168, 0.2);
+  animation: heroFloatingChip 4s ease-in-out infinite alternate;
+
+  &__avatar {
+    font-size: 1.25rem;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  &__sub {
+    font-size: 0.68rem;
+    color: var(--hero-accent);
+    font-weight: 500;
+  }
+
+  &__badge {
+    padding: 0.2rem 0.5rem;
+    background: var(--hero-accent-dim);
+    color: var(--hero-accent);
+    border-radius: 6px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+}
+
+// ==========================================================================
+// KEYFRAME ANIMATIONS (Optimizadas con transform y opacity)
+// ==========================================================================
+@keyframes heroStaggerIn {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroVisualIn {
+  0% {
+    opacity: 0;
+    transform: translateY(32px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes dotPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.5;
+  }
+}
+
+@keyframes ambientPulse {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(1.15) translate(-10px, 15px);
+    opacity: 0.55;
+  }
+}
+
+@keyframes heroFloatingChip {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-8px);
+  }
+}
+
+// ==========================================================================
+// RESPONSIVIDAD (Diseño adaptativo Mobile, Tablet y Desktop)
+// ==========================================================================
+@media (max-width: 1080px) {
+  .hero {
+    &__container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    &__content {
+      align-items: center;
+      text-align: center;
+    }
+
+    &__description {
+      max-width: 600px;
+    }
+
+    &__actions {
+      justify-content: center;
+    }
+
+    &__stats-strip {
+      justify-content: center;
+    }
+
+    &__visual {
+      width: 100%;
+    }
+  }
+
+  .hero-floating-chip {
+    right: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 2rem 1.25rem;
+    border-radius: 18px;
+
+    &__actions {
+      flex-direction: column;
+      width: 100%;
+
+      .hero__btn {
+        width: 100%;
+      }
+    }
+
+    &__stats-strip {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    &__stat-divider {
+      display: none;
+    }
+  }
+
+  .hero-floating-chip {
+    position: static;
+    margin-top: 1rem;
+    width: 100%;
+    justify-content: center;
+    animation: none;
+  }
+}
+
+// ==========================================================================
+// ACCESIBILIDAD (Prefers Reduced Motion)
+// ==========================================================================
+@media (prefers-reduced-motion: reduce) {
+  .hero__ambient,
+  .hero__badge,
+  .hero__title,
+  .hero__description,
+  .hero__actions,
+  .hero__stats-strip,
+  .hero__visual,
+  .hero-card,
+  .hero-floating-chip,
+  .live-pulse,
+  .hero__badge-pulse {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .hero__content > *,
+  .hero__visual {
+    opacity: 1 !important;
+  }
+}

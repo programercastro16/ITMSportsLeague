@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using SportsLeague.Domain.Entities;
 using SportsLeague.Domain.Interfaces.Repositories;
 using SportsLeague.Domain.Interfaces.Services;
@@ -52,7 +52,7 @@ namespace SportsLeague.Domain.Services
             return await _sponsorRepository.CreateAsync(sponsor);
         }
 
-        public async Task<Sponsor> UpdateAsync(int id, Sponsor sponsor)
+        public async Task UpdateAsync(int id, Sponsor sponsor)
         {
             var existing = await _sponsorRepository.GetByIdAsync(id);
             if (existing == null)
@@ -80,8 +80,6 @@ namespace SportsLeague.Domain.Services
 
             _logger.LogInformation("Updating sponsor with ID: {SponsorId}", id);
             await _sponsorRepository.UpdateAsync(existing);
-
-            return existing;
         }
 
         public async Task DeleteAsync(int id)
@@ -186,3 +184,4 @@ namespace SportsLeague.Domain.Services
         }
     }
 }
+

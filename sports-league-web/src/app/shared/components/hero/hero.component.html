@@ -1,0 +1,140 @@
+<header class="hero" role="banner">
+  <!-- Luces ambientales de fondo con gradientes difusos -->
+  <div class="hero__ambient hero__ambient--cyan" aria-hidden="true"></div>
+  <div class="hero__ambient hero__ambient--emerald" aria-hidden="true"></div>
+
+  <div class="hero__container">
+    <!-- Columna de Contenido Principal -->
+    <div class="hero__content">
+      <!-- Badge de Estado de la Liga -->
+      <div class="hero__badge">
+        <span class="hero__badge-pulse" aria-hidden="true"></span>
+        <span class="hero__badge-text">TEMPORADA 2026 • ITM SPORTS LEAGUE</span>
+      </div>
+
+      <!-- Título Principal de Impacto -->
+      <h1 class="hero__title">
+        La nueva era de la
+        <span class="hero__title-highlight">gestión deportiva</span>
+      </h1>
+
+      <!-- Texto Descriptivo Balanceado -->
+      <p class="hero__description">
+        Administra torneos profesionales, orquesta plantillas de alto rendimiento y analiza resultados en tiempo real a través de una experiencia fluida, moderna y conectada.
+      </p>
+
+      <!-- Botones de Acción / Microinteracciones -->
+      <div class="hero__actions">
+        <a [routerLink]="['/torneos']" class="hero__btn hero__btn--primary">
+          <span>Explorar Torneos</span>
+          <svg class="hero__btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+          </svg>
+        </a>
+
+        <a [routerLink]="['/equipos']" class="hero__btn hero__btn--ghost">
+          <svg class="hero__btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
+          </svg>
+          <span>Equipos & Jugadores</span>
+        </a>
+      </div>
+
+      <!-- Barra de Métricas y Confianza -->
+      <div class="hero__stats-strip">
+        <div class="hero__stat-unit">
+          <span class="hero__stat-num">100%</span>
+          <span class="hero__stat-tag">Sincronización API</span>
+        </div>
+        <div class="hero__stat-divider" aria-hidden="true"></div>
+        <div class="hero__stat-unit">
+          <span class="hero__stat-num">Directo</span>
+          <span class="hero__stat-tag">Marcadores en Vivo</span>
+        </div>
+        <div class="hero__stat-divider" aria-hidden="true"></div>
+        <div class="hero__stat-unit">
+          <span class="hero__stat-num">Élite</span>
+          <span class="hero__stat-tag">Rendimiento Atlético</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Visual: Tarjeta Interactiva en Tiempo Real -->
+    <div class="hero__visual" aria-label="Previsualización de partido destacado">
+      <div class="hero-card">
+        <!-- Cabecera de la Tarjeta -->
+        <div class="hero-card__header">
+          <div class="hero-card__league">
+            <div class="hero-card__trophy-icon">🏆</div>
+            <div>
+              <span class="hero-card__league-name">Gran Final de Liga</span>
+              <span class="hero-card__season">Torneo Apertura 2026</span>
+            </div>
+          </div>
+          <div class="hero-card__live-pill">
+            <span class="live-pulse" aria-hidden="true"></span>
+            <span>EN VIVO</span>
+          </div>
+        </div>
+
+        <!-- Marcador del Enfrentamiento -->
+        <div class="hero-card__scoreboard">
+          <div class="hero-team">
+            <div class="hero-team__crest">⚡</div>
+            <span class="hero-team__name">Águilas ITM</span>
+            <span class="hero-team__rank">Local</span>
+          </div>
+
+          <div class="hero-score">
+            <div class="hero-score__digits">
+              <span class="hero-score__num">3</span>
+              <span class="hero-score__sep">:</span>
+              <span class="hero-score__num">2</span>
+            </div>
+            <span class="hero-score__time">Min 82' • 2T</span>
+          </div>
+
+          <div class="hero-team">
+            <div class="hero-team__crest">🔥</div>
+            <span class="hero-team__name">Titanes FC</span>
+            <span class="hero-team__rank">Visita</span>
+          </div>
+        </div>
+
+        <!-- Barra de Estadísticas del Partido -->
+        <div class="hero-card__stats">
+          <div class="hero-metric">
+            <div class="hero-metric__labels">
+              <span>Posesión de Balón</span>
+              <span>56% vs 44%</span>
+            </div>
+            <div class="hero-progress">
+              <div class="hero-progress__fill" style="width: 56%"></div>
+            </div>
+          </div>
+
+          <div class="hero-card__tag-row">
+            <span class="hero-tag">
+              <span class="hero-tag__dot"></span>
+              14 Tiros al arco
+            </span>
+            <span class="hero-tag">
+              <span class="hero-tag__dot"></span>
+              Alta intensidad
+            </span>
+          </div>
+        </div>
+
+        <!-- Chip Flotante de Reconocimiento / Micro-tarjeta Glassmorphic -->
+        <div class="hero-floating-chip">
+          <div class="hero-floating-chip__avatar">🥇</div>
+          <div class="hero-floating-chip__info">
+            <span class="hero-floating-chip__title">Goleador del Torneo</span>
+            <span class="hero-floating-chip__sub">16 Goles Registrados</span>
+          </div>
+          <span class="hero-floating-chip__badge">Destacado</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
